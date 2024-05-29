@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_bug.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 19:03:15 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/28 19:04:07 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/29 19:34:05 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/29 19:35:11 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../philosophers.h"
 
-void	ft_print_bug(char *bug)
+int	ft_isdigit(int d)
 {
-	printf("the bug is : %s\n", bug);
+	if (d >= 48 && d <= 57)
+	{
+		return (1);
+	}
+	return (0);
 }
