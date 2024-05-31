@@ -6,13 +6,13 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:48:30 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/29 19:51:44 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:17:12 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_validate_args(char ** argc)
+int	ft_validate_args(char **argc)
 {
 	int	i;
 	int	j;

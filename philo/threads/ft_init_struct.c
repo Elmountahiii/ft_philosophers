@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_philo.c                                    :+:      :+:    :+:   */
+/*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:57:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/31 16:52:38 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/05/31 23:15:36 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_init_philo(t_philo **philo, int argc, char **argv)
+int	ft_init_struct(t_philo **philo, int argc, char **argv)
 {
 	*philo = malloc(sizeof(t_philo));
 	if (!(*philo))
