@@ -7,14 +7,16 @@ NC=\033[0m
 
 NAME = philo
 CC = cc
-treads_files =  ft_run_thread.c
+treads_files = ft_create_philosophers.c ft_clean.c
 treads_pre = $(addprefix threads/, $(treads_files))
-utils_files =  ft_atoi.c ft_isdigit.c ft_validate_args.c ft_init_philo.c
+utils_files =  ft_atoi.c ft_isdigit.c ft_validate_args.c ft_init_philo.c ft_print_error.c ft_print_success.c\
+ft_play_with_time.c
 utiles_pre = $(addprefix utils/, $(utils_files))
 files = main.c $(utiles_pre) $(treads_pre)
 header = philosophers.h
 SOBJ = $(files:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
+# -g -fsanitize=address
 RM = rm -f
 
 all: $(NAME)

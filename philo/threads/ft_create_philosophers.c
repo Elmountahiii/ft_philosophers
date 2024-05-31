@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_create_philosophers.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 18:56:26 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/31 19:11:32 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/05/31 16:04:52 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/05/31 16:54:38 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philosophers.h"
 
-int main(int argc, char *argv[])
+int	ft_create_philosophers(t_philo *philo)
 {
-	t_philo *philo;
-
-	philo = NULL;
-	if (argc >= 5 && argc <= 6)
+	philo->treads = malloc(sizeof(pthread_t) * philo->philo_num);
+	if (!philo->treads)
 	{
-		if (ft_validate_args(argv) || ft_init_philo(&philo, argc, argv))
-		{
-			ft_print_error("invalid arguments");
-			return (1);
-		}
-		ft_print_success("valid arguments");
-		ft_create_philosophers(philo);
-		ft_play_with_time(philo);
-	}
-	else
-	{
-		ft_print_error("invalid arguments count");
+		ft_clean(philo);
 		return (1);
 	}
-	return 0;
+	philo->forks = malloc(sizeof(pthread_mutex_t) * philo->philo_num);
+	if (!philo->forks)
+	{
+		ft_clean(philo);
+		return (1);
+	}
+	return (0);
 }
