@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_time.c                                      :+:      :+:    :+:   */
+/*   ft_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 19:07:18 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/01 17:29:56 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/02 21:50:46 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/02 21:58:48 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-long	ft_get_time()
+void	ft_sleep(size_t time2sleep)
 {
-	struct timeval tv;
+	size_t start;
+	size_t	current;
 
-	gettimeofday(&tv,NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	start = ft_get_time();
+	while (1)
+	{
+		current = ft_get_time();
+		if (current - start >= time2sleep)
+			break;
+	}
 }

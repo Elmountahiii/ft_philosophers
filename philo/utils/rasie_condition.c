@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 00:12:42 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/01 00:38:24 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/01 12:45:17 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void * increment_global_var(void *arg)
 	(void)arg; // to avoid warning (unused parameter
 	int i = 0;
 	pthread_mutex_lock(&mutex);
-	printf("i found the global var: %d\n", g_var);
+	printf("1 i found the global var: %d\n", g_var);
 	while (i < 1000000)
 	{
 		g_var++;
@@ -36,7 +36,7 @@ void * decrement_global_var(void *arg)
 	(void)arg; // to avoid warning (unused parameter
 	int i = 0;
 	pthread_mutex_lock(&mutex);
-	printf("i found the global var: %d\n", g_var);
+	printf("2 i found the global var: %d\n", g_var);
 	while (i < 1000000)
 	{
 		g_var--;
@@ -52,14 +52,12 @@ void	raise_condition()
 	int i = 0;
 
 	pthread_mutex_init(&mutex, NULL);
-	while (i < NUM_THREADS)
-	{
-		if (i == 0)
 			pthread_create(&threads[i], NULL, increment_global_var, NULL);
-		else
-			pthread_create(&threads[i], NULL, decrement_global_var, NULL);
-		i++;
-	}
+			pthread_create(&threads[i + 1], NULL, decrement_global_var, NULL);
+	// while (i < NUM_THREADS)
+	// {
+	// 	i++;
+	// }
 	i = 0;
 	while (i < NUM_THREADS)
 	{

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:56:26 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/01 00:27:25 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:11:16 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		}
 		ft_print_success("valid arguments");
 		ft_create_struct(philo);
-		raise_condition();
+		ft_run_thread(philo);
 	}
 	else
 	{
