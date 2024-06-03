@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/02 21:58:59 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:41:54 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 typedef struct s_philo
 {
 	int				philo_num;
-	int				eat_time;
-	int				sleep_time;
-	int				die_time;
-	int				eat_count;
-	size_t				start_time;
+	size_t				eat_time;
+	size_t				sleep_time;
+	size_t			die_time;
+	size_t				eat_count;
+	size_t			start_time;
 	pthread_mutex_t	print_lock;
 	pthread_t		*treads;
 	pthread_mutex_t *forks;
@@ -39,10 +39,11 @@ typedef struct s_data
 {
 	int				id;
 	pthread_t		thread_id;
-	int				time2eat;
-	int				time2die;
-	int				time2sleep;
-	int				last_meal;
+	size_t				time2eat;
+	size_t				time2die;
+	size_t				time2sleep;
+	size_t			last_meal;
+	pthread_mutex_t *last_meal_lock;
 	t_philo			*all_philo;
 	pthread_mutex_t *left_fork;
 	pthread_mutex_t *right_fork;
@@ -58,7 +59,7 @@ void	ft_print_error(char *error);
 void	ft_print_success(char *message);
 void	ft_play_with_time(t_philo *philo);
 void	ft_run_thread(t_philo *philo);
-long	ft_get_time();
+size_t	ft_get_time();
 void	ft_log(t_data *data, char *str);
 void	ft_sleep(size_t time2sleep);
 // treads

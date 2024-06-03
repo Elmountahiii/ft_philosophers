@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:04:52 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/02 21:19:10 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/03 20:48:28 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ void	ft_init_philosophers(t_philo *philo)
 	{
 		philo->philo_data[i].thread_id = philo->treads[i];
 		philo->philo_data[i].id = i + 1;
-		philo->philo_data[i].last_meal = 0;
+		philo->philo_data[i].last_meal = ft_get_time();
 		philo->philo_data[i].time2die = philo->die_time;
 		philo->philo_data[i].time2eat = philo->eat_time;
 		philo->philo_data[i].time2sleep = philo->sleep_time;
 		philo->philo_data[i].right_fork = &philo->forks[i];
 		philo->philo_data[i].left_fork = &philo->forks[(i + 1) % philo->philo_num];
 		philo->philo_data[i].all_philo = philo;
+		philo->philo_data[i].last_meal_lock = malloc(sizeof(pthread_mutex_t));
+		pthread_mutex_init(philo->philo_data[i].last_meal_lock, NULL);
 		i++;
 	}
 }

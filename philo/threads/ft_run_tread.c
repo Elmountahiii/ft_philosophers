@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:47:01 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/02 22:00:40 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:26:56 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,17 @@ void	ft_put_forks(t_data *philo)
 
 void	ft_eat(t_data *philo)
 {
-	philo->last_meal = ft_get_time();
 	ft_log(philo, "is eating");
+	pthread_mutex_lock(philo->last_meal_lock);
+	philo->last_meal = ft_get_time();
+	pthread_mutex_unlock(philo->last_meal_lock);
 	ft_sleep(philo->time2eat);
 }
 
 void ft_go_sleep(t_data *philo)
 {
 	ft_log(philo, "is sleeping");
-	ft_sleep(philo->all_philo->sleep_time);
+	ft_sleep(philo->time2sleep);
 }
 
 void	*run(void *data)
@@ -73,10 +75,27 @@ void	ft_run_thread(t_philo *philo)
 	pthread_mutex_init(&philo->print_lock, NULL);
 	while (i < philo->philo_num)
 	{
-		if (i % 2 == 0)
-			usleep(100);
 		pthread_create(&philo->philo_data[i].thread_id, NULL, run , &philo->philo_data[i]);
 		i ++;
+	}
+	while (1)
+	{
+		i = 0;
+		while (i < philo->philo_num)
+		{
+			pthread_mutex_lock(philo->philo_data[i].last_meal_lock);
+			size_t current = ft_get_time();
+			size_t time_since = current - philo->philo_data[i].last_meal;
+			pthread_mutex_unlock(philo->philo_data[i].last_meal_lock);
+			if (time_since > philo->die_time)
+			{
+			ft_log(&philo->philo_data[i], "has died");
+			exit(0);
+			pthread_mutex_lock(&philo->print_lock);
+			}
+			
+			i ++;
+		}	
 	}
 	i = 0;
 	while (i < philo->philo_num)
