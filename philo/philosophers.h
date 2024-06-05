@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/03 16:41:54 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:53:41 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_philo
 	size_t			die_time;
 	size_t				eat_count;
 	size_t			start_time;
+	bool			died;
+	pthread_mutex_t  *died_lock;
 	pthread_mutex_t	print_lock;
 	pthread_t		*treads;
 	pthread_mutex_t *forks;
@@ -50,7 +52,6 @@ typedef struct s_data
 }	t_data;
 
 
-
 // utils
 int		ft_atoi(char *str);
 int		ft_isdigit(int d);
@@ -62,6 +63,7 @@ void	ft_run_thread(t_philo *philo);
 size_t	ft_get_time();
 void	ft_log(t_data *data, char *str);
 void	ft_sleep(size_t time2sleep);
+void	ft_print_died(t_data *philo);
 // treads
 int		ft_init_struct(t_philo **philo, int argc, char **argv);
 int		ft_create_struct(t_philo *philo);

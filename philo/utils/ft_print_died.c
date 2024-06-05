@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_log.c                                           :+:      :+:    :+:   */
+/*   ft_print_died.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 17:30:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/05 15:59:05 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/05 15:46:29 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/05 17:38:15 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_log(t_data *data, char *str)
+void	ft_print_died(t_data *philo)
 {
-	pthread_mutex_lock(data->all_philo->died_lock);
-	if (!data->all_philo->died)
-	{
-		pthread_mutex_lock(&data->all_philo->print_lock);
-		printf("%ld %d %s\n", ft_get_time()  - data->all_philo->start_time, data->id, str);
-		pthread_mutex_unlock(&data->all_philo->print_lock);	
-	}
-	pthread_mutex_unlock(data->all_philo->died_lock);
+	pthread_mutex_lock(&philo->all_philo->print_lock);
+	printf("\033[0;31m%ld %d  has died \n\033[0m", ft_get_time()  - philo->all_philo->start_time , philo->id);
+	pthread_mutex_unlock(&philo->all_philo->print_lock);
 }

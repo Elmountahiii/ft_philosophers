@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:04:52 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/03 20:48:28 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:00:08 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int	ft_init_forks(t_philo *philo)
 			return (1);
 		i++;
 	}
+	philo->died_lock = malloc (sizeof(pthread_mutex_t));
+	pthread_mutex_init(philo->died_lock, NULL);
+	philo->died = false;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:47:01 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/03 21:26:56 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:37:26 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,17 @@ void	*run(void *data)
 	return (NULL);
 }
 
+void detach_threads (t_philo *philo)
+{
+	int i = 0;
+	while (i < philo->philo_num)
+	{
+		pthread_detach(philo->treads[i]);
+		i ++;
+	}
+	
+}
+
 void	ft_run_thread(t_philo *philo)
 {
 	int i;
@@ -89,18 +100,26 @@ void	ft_run_thread(t_philo *philo)
 			pthread_mutex_unlock(philo->philo_data[i].last_meal_lock);
 			if (time_since > philo->die_time)
 			{
-			ft_log(&philo->philo_data[i], "has died");
-			exit(0);
-			pthread_mutex_lock(&philo->print_lock);
+				pthread_mutex_lock(philo->died_lock);
+				philo->died = true;
+				pthread_mutex_unlock(philo->died_lock);
+				ft_print_died(&philo->philo_data[i]);
+				detach_threads(philo);
+				break;
 			}
-			
 			i ++;
 		}	
+		pthread_mutex_lock(philo->died_lock);
+		if (philo->died)
+		{
+		return ;
+		}
+		pthread_mutex_unlock(philo->died_lock);
 	}
-	i = 0;
-	while (i < philo->philo_num)
-	{
-		pthread_join(philo->philo_data[i].thread_id, NULL);
-		i ++;
-	}
+	// i = 0;
+	// while (i < philo->philo_num)
+	// {
+	// 	pthread_join(philo->philo_data[i].thread_id, NULL);
+	// 	i ++;
+	// }
 }
