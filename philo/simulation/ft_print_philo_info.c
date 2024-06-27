@@ -1,40 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_print_philo_info.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 19:26:04 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 12:14:20 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/24 19:43:47 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/25 12:17:25 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_atoi(char *str)
+void	ft_print_philo_info(t_philosopher *philo)
 {
-	int	sign;
-	int	result;
-
-	sign = 1;
-	result = 0;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-	{
-		str++;
-	}
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = -1;
-		}
-		str++;
-	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + *str - 48;
-		str++;
-	}
-	return (result * sign);
+	pthread_mutex_lock(philo->general_info->print_lock);
+	printf("philo id : %d  \n",philo->id);
+	pthread_mutex_unlock(philo->general_info->print_lock);
 }

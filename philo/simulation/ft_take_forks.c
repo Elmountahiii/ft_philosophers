@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_take_forks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 19:26:04 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 12:14:20 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/25 12:42:48 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/25 12:43:58 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_atoi(char *str)
+void	ft_take_forks(t_philosopher *philo)
 {
-	int	sign;
-	int	result;
-
-	sign = 1;
-	result = 0;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-	{
-		str++;
-	}
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = -1;
-		}
-		str++;
-	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + *str - 48;
-		str++;
-	}
-	return (result * sign);
+	pthread_mutex_lock(philo->right_fork);
+	ft_log(philo, "has taken a fork");
+	pthread_mutex_lock(philo->left_fork);
+	ft_log(philo, "has taken a fork");
 }

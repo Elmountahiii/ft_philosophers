@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean_struct.c                                  :+:      :+:    :+:   */
+/*   ft_think.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 16:10:13 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/03 15:07:56 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/25 12:29:50 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/25 12:30:14 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_clean(t_philo *philo)
+void	ft_think(t_philosopher *philo)
 {
-	free (philo->treads);
-	free (philo->forks);
-	free (philo);
+	ft_log(philo, "is thinking");
 }

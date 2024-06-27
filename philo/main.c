@@ -6,27 +6,29 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:56:26 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/03 15:09:36 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:57:15 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+void	leaks_check()
+{
+	system("leaks philo");
+}
 int main(int argc, char *argv[])
 {
-	t_philo *philo;
+	t_general_info *info;
 
-	philo = NULL;
+	info = NULL;
 	if (argc >= 5 && argc <= 6)
 	{
-		if (ft_validate_args(argv) || ft_init_struct(&philo, argc, argv))
+		if (ft_validate_args(argv) || ft_init_info(&info, argc, argv))
 		{
 			ft_print_error("invalid arguments");
 			return (1);
 		}
-		ft_print_success("valid arguments");
-		ft_create_struct(philo);
-		ft_run_thread(philo);
+	ft_start_simulation(info);
 	}
 	else
 	{

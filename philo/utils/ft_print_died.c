@@ -6,15 +6,15 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:46:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/05 17:38:15 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/25 19:55:19 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_print_died(t_data *philo)
+void	ft_print_died(t_philosopher *philo)
 {
-	pthread_mutex_lock(&philo->all_philo->print_lock);
-	printf("\033[0;31m%ld %d  has died \n\033[0m", ft_get_time()  - philo->all_philo->start_time , philo->id);
-	pthread_mutex_unlock(&philo->all_philo->print_lock);
+	pthread_mutex_lock(philo->general_info->print_lock);
+	printf("\033[0;31m%ld %d died \n\033[0m", ft_get_time()  - philo->general_info->simulation_start , philo->id);
+	pthread_mutex_unlock(philo->general_info->print_lock);
 }

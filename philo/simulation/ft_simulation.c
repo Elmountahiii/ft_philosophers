@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sleep.c                                         :+:      :+:    :+:   */
+/*   ft_simulation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 21:50:46 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/23 19:29:00 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/24 19:23:18 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/27 11:13:30 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_sleep(size_t time2sleep)
+void	*ft_simulation(void *data)
 {
-	size_t start;
-	size_t	current;
-
-	start = ft_get_time();
+	t_philosopher *philo;
+	philo = (t_philosopher *) data;
+	if (philo->id % 2 == 0)
+			ft_go_sleep(philo);
 	while (1)
 	{
-		usleep(100);
-		current = ft_get_time();
-		if (current - start >= time2sleep)
+		ft_think(philo);
+		ft_take_forks(philo);
+		ft_eat(philo);
+		ft_put_forks(philo);
+		ft_go_sleep(philo);
+		if(ft_check_philo_exit(philo))
 			break;
 	}
+	pthread_mutex_lock(philo->general_info->simulation_end_lock);
+	philo->general_info->simulation_end++;
+	pthread_mutex_unlock(philo->general_info->simulation_end_lock);
+	return (NULL);
 }

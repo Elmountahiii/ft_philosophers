@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_init_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:57:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/31 23:15:36 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/26 21:41:56 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_init_struct(t_philo **philo, int argc, char **argv)
+int	ft_init_info(t_general_info **info, int argc, char ** argv)
 {
-	*philo = malloc(sizeof(t_philo));
-	if (!(*philo))
+	*info = malloc(sizeof(t_general_info));
+	if (!(*info))
 		return (1);
-	(*philo)->philo_num = ft_atoi(argv[1]);
-	(*philo)->die_time = ft_atoi(argv[2]);
-	(*philo)->eat_time = ft_atoi(argv[3]);
-	(*philo)->sleep_time = ft_atoi(argv[4]);
+	(*info)->philo_num = ft_atoi(argv[1]);
+	(*info)->time_2_die = ft_atoi(argv[2]);
+	(*info)->time_2_eat = ft_atoi(argv[3]);
+	(*info)->time_2_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 	{
-		(*philo)->eat_count = ft_atoi(argv[5]);
-		if ((*philo)->eat_count <= 0)
+		(*info)->meal_target = ft_atoi(argv[5]);
+		if ((*info)->meal_target <= 0)
 			return (1);
 	}
 	else
-		(*philo)->eat_count = -1;
-	if ((*philo)->philo_num <= 0 || (*philo)->die_time <= 0
-		|| (*philo)->eat_time <= 0 || (*philo)->sleep_time <= 0)
-		return (1);
-	return (0);
+		(*info)->meal_target = -1;
+	(*info)->simulation_end = 0;
+	(*info)->is_dead = false;
+	if (ft_init_mutexes(*info))
+		return(1);
+	if (ft_init_philosophers(*info))
+		return(1);
+	(*info)->simulation_start = ft_get_time();
+	return (0);	
 }

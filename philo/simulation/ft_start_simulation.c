@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_start_simulation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 19:26:04 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 12:14:20 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/24 19:18:39 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/25 12:52:21 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_atoi(char *str)
+void	ft_start_simulation(t_general_info *info)
 {
-	int	sign;
-	int	result;
+	int i;
 
-	sign = 1;
-	result = 0;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
+	i = 0;
+	info->simulation_start = ft_get_time();
+	while (i < info->philo_num)
 	{
-		str++;
+		 pthread_create(&info->philosophers[i].thread, NULL, ft_simulation, &info->philosophers[i]);
+		i++;
 	}
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = -1;
-		}
-		str++;
-	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + *str - 48;
-		str++;
-	}
-	return (result * sign);
+	ft_monitoring(info);
+	
 }
