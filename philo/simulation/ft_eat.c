@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 12:46:25 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/26 22:12:59 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/27 13:12:03 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	ft_eat(t_philosopher *philo)
 	ft_log(philo, "is eating");
 	ft_sleep(philo->general_info->time_2_eat);
 	pthread_mutex_lock(philo->meal_count_lock);
-    philo->meal_count++;
+	philo->meal_count++;
 	pthread_mutex_unlock(philo->meal_count_lock);
 }

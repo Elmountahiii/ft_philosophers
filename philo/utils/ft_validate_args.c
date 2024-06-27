@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:48:30 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/31 23:17:12 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:22:16 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_validate_args(char **argc)
 {
 	int	i;
 	int	j;
-	
+
 	i = 1;
 	while (argc && argc[i])
 	{
