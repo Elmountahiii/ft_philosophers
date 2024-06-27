@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_monitoring.c                                    :+:      :+:    :+:   */
+/*   ft_clean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 19:39:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 12:26:12 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/27 14:02:08 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/27 14:30:59 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_monitoring(t_general_info *info)
+void	ft_clean(t_general_info *info)
 {
-	int		i;
-
-	i = 0;
-	while (!info->exit)
-	{
-		i = 0;
-		while (i < info->philo_num)
-		{
-			if (ft_check_death(info, i))
-			{
-				pthread_mutex_lock(info->is_dead_lock);
-				info->is_dead = true;
-				info->exit = true;
-				pthread_mutex_unlock(info->is_dead_lock);
-				ft_print_died(&info->philosophers[i]);
-				break ;
-			}
-			i ++;
-		}
-		ft_check_monitor_exit(info);
-	}
+	ft_clean_mutexes(info);
+	ft_free(info);
 }

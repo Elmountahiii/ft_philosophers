@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_monitoring.c                                    :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 19:39:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 12:26:12 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/06/27 14:15:00 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/06/27 14:46:50 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_monitoring(t_general_info *info)
+void	ft_free(t_general_info *info)
 {
-	int		i;
+	// int	i;
 
-	i = 0;
-	while (!info->exit)
-	{
-		i = 0;
-		while (i < info->philo_num)
-		{
-			if (ft_check_death(info, i))
-			{
-				pthread_mutex_lock(info->is_dead_lock);
-				info->is_dead = true;
-				info->exit = true;
-				pthread_mutex_unlock(info->is_dead_lock);
-				ft_print_died(&info->philosophers[i]);
-				break ;
-			}
-			i ++;
-		}
-		ft_check_monitor_exit(info);
-	}
+	// i = 0;
+	info->print_lock= NULL;
+	free(info->print_lock);
+	// free(info->is_dead_lock);
+	// free(info->simulation_end_lock);
+	// free(info->exit_lock);
+	// while (i < info->philo_num)
+	// {
+	// 	free(info->philosophers[i].meal_count_lock);
+	// 	free(info->philosophers[i].last_meal_lock);
+	// 	i ++;
+	// }
+	// free(info->forks);
+	// free(info->philosophers);
+	// free(info);
 }

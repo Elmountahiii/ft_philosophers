@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 12:21:24 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:17:06 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,9 @@ int		ft_check_philo_exit(t_philosopher *philo);
 void	ft_print_died(t_philosopher *philo);
 int		ft_check_death(t_general_info *info, int index);
 void	ft_check_monitor_exit(t_general_info *info);
+//clean
+void	ft_clean(t_general_info *info);
+void	ft_clean_mutexes(t_general_info *info);
+void	ft_free(t_general_info *info);
 
 #endif
