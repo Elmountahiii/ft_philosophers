@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:18:39 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/30 18:46:30 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/30 22:54:11 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	ft_start_simulation(t_general_info *info)
 		i++;
 	}
 	ft_monitoring(info);
-	i = 0;
-	while (i < info->philo_num)
-	{
-		pthread_join(info->philosophers[i].thread,NULL);
-		i ++;
-	}
+	// i = 0;
+	// while (i < info->philo_num)
+	// {
+	// 	pthread_join(info->philosophers[i].thread,NULL);
+	// 	i ++;
+	// }
 }

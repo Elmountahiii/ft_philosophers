@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/30 17:14:05 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/30 22:52:01 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_general_info
 	pthread_mutex_t			*is_dead_lock;
 	bool					is_dead;
 	bool					exit;
+	pthread_mutex_t			*check_lock;
 	pthread_mutex_t			*exit_lock;
 	pthread_mutex_t			*all_lock;
 	pthread_mutex_t			*print_lock;

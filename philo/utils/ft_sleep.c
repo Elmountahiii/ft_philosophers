@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 21:50:46 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 12:29:38 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/30 22:51:04 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 void	ft_sleep(size_t time2sleep)
 {
 	size_t	start;
-	size_t	current;
 
 	start = ft_get_time();
-	while (1)
-	{
-		usleep(100);
-		current = ft_get_time();
-		if (current - start >= time2sleep)
-			break ;
-	}
+	while ((ft_get_time() - start) < time2sleep)
+    	usleep(100);
 }

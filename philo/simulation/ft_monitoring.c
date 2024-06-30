@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:39:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/30 17:04:19 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/30 22:31:11 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_monitoring(t_general_info *info)
 {
-	int		i;
+	// int		i;
 
-	i = 0;
+	// i = 0;
 	while (ft_check_monitor_exit(info))
 	{
 		// i = 0;
@@ -35,6 +35,6 @@ void	ft_monitoring(t_general_info *info)
 		// 	}
 		// 	i ++;
 		// }
-		usleep(100);
+		// usleep(100);
 	}
 }

@@ -20,7 +20,8 @@ utiles_pre = $(addprefix utils/, $(utils_files))
 files = main.c $(utiles_pre) $(treads_pre) $(simulation_pre) $(clean_pre)
 header = philosophers.h
 SOBJ = $(files:.c=.o)
-CFLAGS = -Wall -Wextra -Werror -pthread  -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread 
+#  -fsanitize=thread
 RM = rm -f
 
 all: $(NAME)
