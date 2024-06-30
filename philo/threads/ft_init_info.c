@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:57:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 16:45:57 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:50:28 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_init_info(t_general_info **info, int argc, char **argv)
 		(*info)->meal_target = -1;
 	(*info)->simulation_end = 0;
 	(*info)->is_dead = false;
+	(*info)->exit = false;
 	if (ft_init_mutexes(*info))
 		return (1);
 	if (ft_init_philosophers(*info))

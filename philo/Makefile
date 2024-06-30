@@ -10,7 +10,7 @@ CC = cc
 clean_files = ft_clean.c ft_clean_mutexes.c ft_free.c
 clean_pre = $(addprefix clean/, $(clean_files))
 simulation_files = ft_monitoring.c  ft_simulation.c ft_start_simulation.c ft_go_sleep.c ft_think.c ft_take_forks.c ft_put_forks.c\
-ft_eat.c ft_check_philo_exit.c ft_check_death.c  ft_check_monitor_exit.c
+ft_eat.c ft_check_philo_exit.c ft_check_death.c  ft_check_monitor_exit.c 
 simulation_pre = $(addprefix simulation/, $(simulation_files))
 treads_files = ft_create_mutexes.c ft_init_info.c ft_init_philosophers.c
 treads_pre = $(addprefix threads/, $(treads_files))
@@ -20,8 +20,7 @@ utiles_pre = $(addprefix utils/, $(utils_files))
 files = main.c $(utiles_pre) $(treads_pre) $(simulation_pre) $(clean_pre)
 header = philosophers.h
 SOBJ = $(files:.c=.o)
-CFLAGS = -Wall -Wextra -Werror -pthread 
-# -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -pthread  -fsanitize=thread
 RM = rm -f
 
 all: $(NAME)
