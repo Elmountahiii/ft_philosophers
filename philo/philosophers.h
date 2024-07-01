@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/30 22:52:01 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:50:31 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ typedef struct s_general_info
 {
 	int						philo_num;
 	int						simulation_end;
-	pthread_mutex_t			*simulation_end_lock;
 	int						meal_target;
 	size_t					simulation_start;
 	size_t					time_2_die;
 	size_t					time_2_sleep;
 	size_t					time_2_eat;
-	pthread_mutex_t			*is_dead_lock;
 	bool					is_dead;
 	bool					exit;
+	pthread_mutex_t			*simulation_end_lock;
 	pthread_mutex_t			*check_lock;
-	pthread_mutex_t			*exit_lock;
-	pthread_mutex_t			*all_lock;
 	pthread_mutex_t			*print_lock;
 	pthread_mutex_t			*forks;
 	struct s_philosopher	*philosophers;
@@ -45,12 +42,11 @@ typedef struct s_philosopher
 {
 	int					id;
 	int					meal_count;
+	pthread_mutex_t		*last_meal_lock;
 	size_t				last_meal_time;
 	pthread_t			thread;
-	pthread_mutex_t		*last_meal_lock;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
-	pthread_mutex_t		*meal_count_lock;
 	t_general_info		*general_info;
 }	t_philosopher;
 
@@ -63,7 +59,7 @@ size_t	ft_get_time(void);
 void	ft_sleep(size_t time2sleep);
 // treads
 int		ft_init_mutexes(t_general_info *info);
-int		ft_init_info(t_general_info **info, int argc, char **argv);
+int		ft_init_info(t_general_info *info, int argc, char **argv);
 int		ft_init_philosophers(t_general_info *info);
 //simulation
 void	ft_start_simulation(t_general_info *info);
@@ -80,6 +76,16 @@ int		ft_check_philo_exit(t_philosopher *philo);
 void	ft_print_died(t_philosopher *philo);
 int		ft_check_death(t_general_info *info, int index);
 int		ft_check_monitor_exit(t_general_info *info);
+int		ft_read_check(t_general_info *info);
+int		ft_read_dead(t_general_info *info);
+int		ft_read_exit(t_general_info *info);
+void	ft_edit_check(t_general_info *info, bool value);
+void	ft_edit_dead(t_general_info *info, bool value);
+void	ft_edit_exit(t_general_info *info, bool value);
+int		ft_get_semend(t_general_info *info);
+void	ft_set_simend(t_general_info *info, int value);
+size_t	ft_get_last_meal(t_philosopher *philo);
+void	ft_set_last_meal(t_philosopher *philo, size_t value);
 //clean
 void	ft_clean(t_general_info *info);
 void	ft_clean_mutexes(t_general_info *info);

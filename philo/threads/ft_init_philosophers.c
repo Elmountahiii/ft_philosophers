@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 18:38:15 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 12:59:37 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:43:54 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,9 @@ int	ft_init_philosophers(t_general_info *info)
 		return (1);
 	while (i < info->philo_num)
 	{
-		info->philosophers[i].last_meal_lock = malloc(sizeof(pthread_mutex_t));
-		info->philosophers[i].meal_count_lock = malloc(sizeof(pthread_mutex_t));
-		if (!info->philosophers[i].last_meal_lock
-			|| !info->philosophers[i].meal_count_lock)
-			return (1);
-		if (pthread_mutex_init(info->philosophers[i].last_meal_lock, NULL) != 0 
-			|| pthread_mutex_init(info->philosophers[i].meal_count_lock,
-				NULL) != 0)
+		info->philosophers[i].last_meal_lock = malloc(sizeof(pthread_mutex_lock));
+		// check for last_meal_lock
+		if (pthread_mutex_init(info->philosophers[i].last_meal_lock, NULL) != 0)
 			return (1);
 		init(info, i);
 		i++;

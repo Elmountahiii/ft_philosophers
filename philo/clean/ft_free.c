@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:15:00 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/27 14:46:50 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/01 10:55:34 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	ft_free(t_general_info *info)
 {
 	// int	i;
-
+	(void) info;
 	// i = 0;
-	info->print_lock= NULL;
-	free(info->print_lock);
+	
+	//free(info->print_lock);
 	// free(info->is_dead_lock);
 	// free(info->simulation_end_lock);
 	// free(info->exit_lock);

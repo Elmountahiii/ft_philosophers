@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_eat.c                                           :+:      :+:    :+:   */
+/*   ft_get_last_meal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 12:46:25 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/07/01 14:54:46 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/07/01 13:08:10 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/07/01 14:45:16 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_eat(t_philosopher *philo)
+size_t	ft_get_last_meal(t_philosopher *philo)
 {
-	ft_log(philo, "is eating");
-	ft_set_last_meal(philo,ft_get_time());
-	ft_sleep(philo->general_info->time_2_eat);
-	philo->meal_count++;
-	if (philo->meal_count == philo->general_info->meal_target)
-		ft_set_simend(philo->general_info,ft_get_semend(philo->general_info)+1);
+	size_t	time;
+
+	pthread_mutex_lock(philo->last_meal_lock);
+	time = philo->last_meal_time;
+	pthread_mutex_unlock(philo->last_meal_lock);
+	return (time);
 }
