@@ -10,7 +10,7 @@ CC = cc
 clean_files = ft_clean.c ft_clean_mutexes.c ft_free.c
 clean_pre = $(addprefix clean/, $(clean_files))
 simulation_files = ft_monitoring.c  ft_simulation.c ft_start_simulation.c ft_go_sleep.c ft_think.c ft_take_forks.c ft_put_forks.c\
-ft_eat.c ft_check_philo_exit.c ft_check_death.c  ft_check_monitor_exit.c 
+ft_eat.c ft_check_philo_exit.c ft_check_death.c  ft_check_monitor_exit.c  ft_read_dead.c
 simulation_pre = $(addprefix simulation/, $(simulation_files))
 treads_files = ft_create_mutexes.c ft_init_info.c ft_init_philosophers.c
 treads_pre = $(addprefix threads/, $(treads_files))

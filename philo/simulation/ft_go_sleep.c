@@ -6,21 +6,17 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 12:35:27 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/30 23:09:46 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/01 10:05:11 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_go_sleep(t_philosopher *philo)
+int	ft_go_sleep(t_philosopher *philo)
 {
-	ft_log(philo, "is sleeping");
-	ft_sleep(philo->general_info->time_2_sleep);
-	philo->meal_count++;
-	if (philo->meal_count == philo->general_info->meal_target)
-	{
-		pthread_mutex_lock(philo->general_info->check_lock);
-		philo->general_info->simulation_end ++;
-		pthread_mutex_unlock(philo->general_info->check_lock);	
-	}
+	if (ft_log(philo, "is sleeping"))
+		return (1);
+	if (ft_sleep(philo, philo->general_info->time_2_sleep))
+		return (1);
+	return (0);
 }
