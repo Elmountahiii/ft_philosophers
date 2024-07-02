@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/26 19:51:50 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:12:27 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,8 @@ void	ft_put_forks(t_philosopher *philo);
 void	ft_eat(t_philosopher *philo);
 int		ft_check_philo_exit(t_philosopher *philo);
 void	ft_print_died(t_philosopher *philo);
+// setters and getters
+void	ft_set_last_meal(t_philosopher *philo, size_t time);
+size_t	ft_get_last_meal(t_philosopher *philo);
 
 #endif
