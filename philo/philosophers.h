@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/07/02 10:22:05 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:04:30 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_print_success(char *message);
 void	ft_play_with_time(t_philo *philo);
 void	ft_run_thread(t_philo *philo);
 size_t	ft_get_time();
-void	ft_sleep(size_t time2sleep);
+int		ft_sleep(t_general_info *info,size_t time2sleep);
 // treads
 int		ft_init_mutexes(t_general_info *info);
 int		ft_init_info(t_general_info **info, int argc, char ** argv);
@@ -109,12 +109,12 @@ void	ft_start_simulation(t_general_info *info);
 void	*ft_simulation(void *data);
 void	ft_monitoring(t_general_info *info);
 void	ft_print_philo_info(t_philosopher *philo); // to delete
-void	ft_log(t_philosopher *philo, char *str);
-void	ft_think(t_philosopher *philo);
-void	ft_take_forks(t_philosopher *philo);
-void	ft_go_sleep(t_philosopher *philo);
-void	ft_put_forks(t_philosopher *philo);
-void	ft_eat(t_philosopher *philo);
+int		ft_log(t_philosopher *philo, char *str);
+int		ft_think(t_philosopher *philo);
+int		ft_take_forks(t_philosopher *philo);
+int		ft_go_sleep(t_philosopher *philo);
+int		ft_put_forks(t_philosopher *philo);
+int		ft_eat(t_philosopher *philo);
 int		ft_check_philo_exit(t_philosopher *philo);
 void	ft_print_died(t_philosopher *philo);
 // setters and getters

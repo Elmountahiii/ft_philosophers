@@ -6,13 +6,13 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 12:29:50 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 12:30:14 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:43:32 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_think(t_philosopher *philo)
+int	ft_think(t_philosopher *philo)
 {
-	ft_log(philo, "is thinking");
+	return (ft_log(philo, "is thinking"));
 }

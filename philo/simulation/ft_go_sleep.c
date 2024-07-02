@@ -6,14 +6,15 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 12:35:27 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 12:37:25 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:05:29 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void ft_go_sleep(t_philosopher *philo)
+int ft_go_sleep(t_philosopher *philo)
 {
-	ft_log(philo, "is sleeping");
-	ft_sleep(philo->general_info->time_2_sleep);
+	if (ft_log(philo, "is sleeping"))
+		return (1);
+	return(ft_sleep(philo->general_info,philo->general_info->time_2_sleep));
 }
