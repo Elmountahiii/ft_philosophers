@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/07/02 10:12:27 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/07/02 10:22:05 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,10 @@ void	ft_print_died(t_philosopher *philo);
 // setters and getters
 void	ft_set_last_meal(t_philosopher *philo, size_t time);
 size_t	ft_get_last_meal(t_philosopher *philo);
+bool	ft_get_exit(t_general_info *info);
+void	ft_set_exit(t_general_info *info, bool exit);
+bool	ft_get_dead(t_general_info *info);
+void	ft_set_dead(t_general_info *info, bool dead);
+
 
 #endif

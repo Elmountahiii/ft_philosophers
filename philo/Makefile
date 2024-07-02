@@ -7,7 +7,7 @@ NC=\033[0m
 
 NAME = philo
 CC = cc
-setters_files = ft_last_meal.c
+setters_files = ft_last_meal.c ft_use_exit.c ft_use_dead.c
 setters_pre = $(addprefix settersAndGetters/, $(setters_files))
 simulation_files = ft_monitoring.c ft_print_philo_info.c ft_simulation.c ft_start_simulation.c ft_go_sleep.c ft_think.c ft_take_forks.c ft_put_forks.c\
 ft_eat.c ft_check_philo_exit.c
@@ -21,6 +21,7 @@ files = main.c $(utiles_pre) $(treads_pre) $(simulation_pre) $(setters_pre)
 header = philosophers.h
 SOBJ = $(files:.c=.o)
 CFLAGS = -Wall -Wextra -Werror 
+# -g -pthread -fsanitize=thread
 #  -g -fsanitize=address
 RM = rm -f
 
