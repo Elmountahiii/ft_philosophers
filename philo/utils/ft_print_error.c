@@ -6,13 +6,13 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:14:54 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/05/31 16:26:59 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:42:04 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void ft_print_error(char *error)
+void	ft_print_error(char *error)
 {
 	printf("\033[0;31m%s.\n\033[0m", error);
 }

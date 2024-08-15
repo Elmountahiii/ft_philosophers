@@ -6,13 +6,13 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:57:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/26 21:41:56 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:48:30 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_init_info(t_general_info **info, int argc, char ** argv)
+int	ft_init_info(t_general_info **info, int argc, char **argv)
 {
 	*info = malloc(sizeof(t_general_info));
 	if (!(*info))
@@ -32,9 +32,9 @@ int	ft_init_info(t_general_info **info, int argc, char ** argv)
 	(*info)->simulation_end = 0;
 	(*info)->is_dead = false;
 	if (ft_init_mutexes(*info))
-		return(1);
+		return (1);
 	if (ft_init_philosophers(*info))
-		return(1);
+		return (1);
 	(*info)->simulation_start = ft_get_time();
-	return (0);	
+	return (0);
 }

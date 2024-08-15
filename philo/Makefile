@@ -15,7 +15,7 @@ simulation_pre = $(addprefix simulation/, $(simulation_files))
 treads_files = ft_create_mutexes.c ft_init_info.c ft_init_philosophers.c
 treads_pre = $(addprefix threads/, $(treads_files))
 utils_files =  ft_atoi.c ft_isdigit.c ft_validate_args.c ft_print_error.c ft_print_success.c\
-ft_play_with_time.c rasie_condition.c ft_get_time.c ft_log.c ft_sleep.c ft_print_died.c
+ft_play_with_time.c  ft_get_time.c ft_log.c ft_sleep.c ft_print_died.c
 utiles_pre = $(addprefix utils/, $(utils_files))
 files = main.c $(utiles_pre) $(treads_pre) $(simulation_pre) $(setters_pre)
 header = philosophers.h

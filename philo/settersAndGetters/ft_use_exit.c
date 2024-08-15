@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dead_exit.c                                     :+:      :+:    :+:   */
+/*   ft_use_exit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:16:49 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/07/02 10:20:10 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:12:06 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	ft_get_exit(t_general_info *info)
 {
-	bool exit;
+	bool	exit;
+
 	pthread_mutex_lock(info->exit_lock);
 	exit = info->exit;
 	pthread_mutex_unlock(info->exit_lock);

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:53:57 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 14:06:43 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:46:53 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	ft_init_mutexes(t_general_info *info)
 	info->is_dead_lock = malloc(sizeof(pthread_mutex_t));
 	info->simulation_end_lock = malloc(sizeof(pthread_mutex_t));
 	info->exit_lock = malloc(sizeof(pthread_mutex_t));
-	if (!info->forks || !info->print_lock || !info->is_dead_lock || !info->simulation_end_lock || !info->exit_lock )
+	if (!info->forks || !info->print_lock || !info->is_dead_lock
+		|| !info->simulation_end_lock || !info->exit_lock)
 		return (1);
 	while (i < info->philo_num)
 	{
@@ -31,8 +32,8 @@ int	ft_init_mutexes(t_general_info *info)
 		i ++;
 	}
 	if (pthread_mutex_init(info->print_lock, NULL) != 0
-	 	|| pthread_mutex_init(info->is_dead_lock, NULL) != 0
-	 	|| pthread_mutex_init(info->simulation_end_lock, NULL) != 0
+		|| pthread_mutex_init(info->is_dead_lock, NULL) != 0
+		|| pthread_mutex_init(info->simulation_end_lock, NULL) != 0
 		|| pthread_mutex_init(info->exit_lock, NULL) != 0)
 		return (1);
 	return (0);

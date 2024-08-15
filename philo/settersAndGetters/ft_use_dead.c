@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 10:21:26 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/07/02 10:21:44 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:11:41 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	ft_get_dead(t_general_info *info)
 {
-	bool dead;
+	bool	dead;
+
 	pthread_mutex_lock(info->is_dead_lock);
 	dead = info->is_dead;
 	pthread_mutex_unlock(info->is_dead_lock);
