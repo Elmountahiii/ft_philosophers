@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/15 22:21:30 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:41:55 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ bool	ft_get_exit(t_general_info *info);
 void	ft_set_exit(t_general_info *info, bool exit);
 bool	ft_get_dead(t_general_info *info);
 void	ft_set_dead(t_general_info *info, bool dead);
-
+int		ft_get_simulation_end(t_general_info *info);
+void	ft_set_simulation_end(t_general_info *info);
 #endif

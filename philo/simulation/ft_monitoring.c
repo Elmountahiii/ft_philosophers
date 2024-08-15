@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:39:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/15 22:05:21 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:43:04 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_monitoring(t_general_info *info)
 	while (!ft_get_exit(info))
 	{
 		i = 0;
+		if (ft_get_simulation_end(info) >= info->philo_num)
+			break ;
 		while (i < info->philo_num)
 		{
 			time_since

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:23:18 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/15 22:08:07 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/15 22:46:49 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,5 @@ void	*ft_simulation(void *data)
 		if (ft_go_sleep(philo))
 			break ;
 	}
-	pthread_mutex_lock(philo->general_info->simulation_end_lock);
-	philo->general_info->simulation_end++;
-	pthread_mutex_unlock(philo->general_info->simulation_end_lock);
 	return (NULL);
 }
