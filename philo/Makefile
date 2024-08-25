@@ -12,7 +12,7 @@ setters_pre = $(addprefix settersAndGetters/, $(setters_files))
 simulation_files = ft_monitoring.c ft_print_philo_info.c ft_simulation.c ft_start_simulation.c ft_go_sleep.c ft_think.c ft_take_forks.c ft_put_forks.c\
 ft_eat.c ft_check_philo_exit.c
 simulation_pre = $(addprefix simulation/, $(simulation_files))
-treads_files = ft_create_mutexes.c ft_init_info.c ft_init_philosophers.c
+treads_files = ft_create_mutexes.c ft_init_info.c ft_init_philosophers.c ft_init_numbers.c
 treads_pre = $(addprefix threads/, $(treads_files))
 utils_files =  ft_atoi.c ft_isdigit.c ft_validate_args.c ft_print_error.c ft_print_success.c\
 ft_play_with_time.c  ft_get_time.c ft_log.c ft_sleep.c ft_print_died.c
@@ -20,8 +20,7 @@ utiles_pre = $(addprefix utils/, $(utils_files))
 files = main.c $(utiles_pre) $(treads_pre) $(simulation_pre) $(setters_pre)
 header = philosophers.h
 SOBJ = $(files:.c=.o)
-CFLAGS = -Wall -Wextra -Werror 
-# -g -pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g  -fsanitize=thread
 #  -g -fsanitize=address
 RM = rm -f
 
@@ -43,3 +42,8 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all philo
+
+.PHONY: all clean fclean re
+
+# ./philo 3 599 200 150
+# ./philo 3 600 200 150 1 with flag

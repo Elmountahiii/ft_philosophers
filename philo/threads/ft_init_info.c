@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:57:58 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/15 21:48:30 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/25 12:19:47 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ int	ft_init_info(t_general_info **info, int argc, char **argv)
 	*info = malloc(sizeof(t_general_info));
 	if (!(*info))
 		return (1);
-	(*info)->philo_num = ft_atoi(argv[1]);
-	(*info)->time_2_die = ft_atoi(argv[2]);
-	(*info)->time_2_eat = ft_atoi(argv[3]);
-	(*info)->time_2_sleep = ft_atoi(argv[4]);
+	if (ft_init_numbers(info, argv))
+		return (1);
 	if (argc == 6)
 	{
 		(*info)->meal_target = ft_atoi(argv[5]);
