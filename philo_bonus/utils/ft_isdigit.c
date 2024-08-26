@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sleep.c                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 21:50:46 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/25 23:29:46 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/08/26 01:27:28 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/08/26 01:28:01 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-int	ft_sleep(t_general_info *info, size_t time2sleep)
+int	ft_isdigit(int d)
 {
-	size_t	start;
-
-	start = ft_get_time();
-	while ((ft_get_time() - start) < time2sleep)
+	if (d >= 48 && d <= 57)
 	{
-		if (ft_get_dead(info))
-			return (1);
-		usleep(400);
+		return (1);
 	}
 	return (0);
 }

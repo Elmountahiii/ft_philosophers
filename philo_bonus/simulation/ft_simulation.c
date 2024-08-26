@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sleep.c                                         :+:      :+:    :+:   */
+/*   ft_simulation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 21:50:46 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/25 23:29:46 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/08/26 01:40:35 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/08/26 01:40:45 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-int	ft_sleep(t_general_info *info, size_t time2sleep)
+void	ft_simulation(t_general_info *info)
 {
-	size_t	start;
-
-	start = ft_get_time();
-	while ((ft_get_time() - start) < time2sleep)
-	{
-		if (ft_get_dead(info))
-			return (1);
-		usleep(400);
-	}
-	return (0);
+	(void)info;
 }
