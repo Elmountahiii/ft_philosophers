@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sleep.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 21:50:46 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/25 23:29:46 by yel-moun         ###   ########.fr       */
+/*   Created: 2024/08/26 01:25:27 by yel-moun          #+#    #+#             */
+/*   Updated: 2024/08/26 01:25:43 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philosophers_bonus.h"
 
-int	ft_sleep(t_general_info *info, size_t time2sleep)
+int	ft_atoi(char *str)
 {
-	size_t	start;
+	int	sign;
+	int	result;
 
-	start = ft_get_time();
-	while ((ft_get_time() - start) < time2sleep)
+	sign = 1;
+	result = 0;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
 	{
-		if (ft_get_dead(info))
-			return (1);
-		usleep(400);
+		str++;
 	}
-	return (0);
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+		{
+			sign = -1;
+		}
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		result = result * 10 + *str - 48;
+		str++;
+	}
+	return (result * sign);
 }
