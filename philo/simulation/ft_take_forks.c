@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 12:42:48 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/25 15:20:10 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/25 16:34:34 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_take_forks(t_philosopher *philo)
 {
 	pthread_mutex_lock(philo->right_fork);
 	if (ft_log(philo, "has taken a fork"))
+		return (1);
+	if (philo->right_fork == philo->left_fork)
 		return (1);
 	pthread_mutex_lock(philo->left_fork);
 	if (ft_log(philo, "has taken a fork"))
