@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 01:28:49 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/27 13:16:38 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/27 21:52:41 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	ft_open_sem(t_general_info **info)
 {
 	sem_unlink(SEM_FORKS_NAME);
 	sem_unlink(SEM_LOCK_NAME);
-	sem_unlink(SEM_LOCK_NAME);
+	sem_unlink(SEM_PRINT_LOCK);
 	(*info)->forks = sem_open(SEM_FORKS_NAME, O_CREAT, 0644, (*info)->philo_num);
-	(*info)->start_lock = sem_open(SEM_LOCK_NAME, O_CREAT, 0644, 0);
-	(*info)->print_lock = sem_open(SEM_PRINT_LOCK, O_CREAT, 0644,1);
+	(*info)->start_lock = sem_open(SEM_LOCK_NAME, O_CREAT | O_EXCL, 0644, 0);
+	(*info)->print_lock = sem_open(SEM_PRINT_LOCK, O_CREAT | O_EXCL, 0644, 1);
 	if ((*info)->forks == SEM_FAILED || (*info)->start_lock == SEM_FAILED || (*info)->print_lock == SEM_FAILED)
 	{
 		printf("Error : SEM_FAILED\n");

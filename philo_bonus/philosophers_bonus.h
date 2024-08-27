@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 01:16:35 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/27 13:25:00 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/27 21:59:53 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@
 # include <string.h>
 # include <semaphore.h>
 # include <sys/time.h>
+# include <stdbool.h>
+# include <pthread.h>
 # define	SEM_FORKS_NAME "/forks"
 # define	SEM_LOCK_NAME  "/start_lock"
 # define	SEM_PRINT_LOCK	"/print_lock"
 
 typedef struct s_philo {
-	int	id;
-	int	meal_count;
+	int					id;
+	int					meal_count;
+	size_t				last_meal;
+	bool				is_dead;
+	pthread_t			monitor;
 	struct s_general_info *info;
 }	t_philo;
 
