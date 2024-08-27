@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 01:16:35 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/26 21:41:48 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:25:00 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 # include <unistd.h>
 # include <string.h>
 # include <semaphore.h>
-
+# include <sys/time.h>
 # define	SEM_FORKS_NAME "/forks"
 # define	SEM_LOCK_NAME  "/start_lock"
+# define	SEM_PRINT_LOCK	"/print_lock"
 
 typedef struct s_philo {
 	int	id;
@@ -31,12 +32,14 @@ typedef struct s_philo {
 typedef struct s_general_info
 {
 	int		philo_num;
-	int		time_2_die;
-	int		time_2_eat;
-	int		time_2_sleep;
+	size_t	time_2_die;
+	size_t	time_2_eat;
+	size_t	time_2_sleep;
+	size_t	start_time;
 	int		meal_target;
 	t_philo	*philo;
 	size_t	simulation_start;
+	sem_t	*print_lock;
 	sem_t	*forks;
 	sem_t	*start_lock;
 } t_general_info;
@@ -44,6 +47,9 @@ typedef struct s_general_info
 // utils functions
 int		ft_atoi(char *str);
 int		ft_isdigit(int d);
+void	ft_print_message(t_philo *philo,char *message);
+size_t	ft_get_time(void);
+void	ft_sleep(size_t time2sleep);
 // init functions
 int		ft_init_philos(t_general_info **info, int argc, char **argv);
 // simulation functions

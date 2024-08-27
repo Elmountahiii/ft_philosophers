@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:12:52 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/26 22:42:53 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:24:29 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,25 @@
 
 void	routine(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
 	sem_wait(philo->info->start_lock);
-	printf("id: %d starts\n",philo->id);
-	while (i < 10)
+	if (philo->id % 2 == 0)
 	{
-		printf("process %d says hey\n", philo->id);
-		i ++;
+		ft_print_message(philo, "is sleeping");
+		ft_sleep(philo->info->time_2_sleep);
+	}
+	while (1)
+	{
+		ft_print_message(philo,"is thinking");
+		sem_wait(philo->info->forks);
+		ft_print_message(philo, "has taken a fork");
+		sem_wait(philo->info->forks);
+		ft_print_message(philo, "has taken a fork");
+		ft_print_message(philo, "is eating");
+		ft_sleep(philo->info->time_2_eat);
+		sem_post(philo->info->forks);
+		sem_post(philo->info->forks);
+		ft_print_message(philo, "is sleeping");
+		ft_sleep(philo->info->time_2_sleep);
 	}
 	exit(0);
 }

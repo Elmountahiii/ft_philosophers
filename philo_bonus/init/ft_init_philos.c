@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 01:28:49 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/26 22:40:17 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:16:38 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	ft_open_sem(t_general_info **info)
 {
 	sem_unlink(SEM_FORKS_NAME);
 	sem_unlink(SEM_LOCK_NAME);
+	sem_unlink(SEM_LOCK_NAME);
 	(*info)->forks = sem_open(SEM_FORKS_NAME, O_CREAT, 0644, (*info)->philo_num);
 	(*info)->start_lock = sem_open(SEM_LOCK_NAME, O_CREAT, 0644, 0);
-	if ((*info)->forks == SEM_FAILED || (*info)->start_lock == SEM_FAILED)
+	(*info)->print_lock = sem_open(SEM_PRINT_LOCK, O_CREAT, 0644,1);
+	if ((*info)->forks == SEM_FAILED || (*info)->start_lock == SEM_FAILED || (*info)->print_lock == SEM_FAILED)
 	{
 		printf("Error : SEM_FAILED\n");
 		return (1);
@@ -68,6 +70,7 @@ int	ft_init_numbers(t_general_info **info, int argc, char **argv)
 	(*info)->time_2_die = t_2_die;
 	(*info)->time_2_eat = t_2_eat;
 	(*info)->time_2_sleep = t_2_sleep;
+	(*info)->start_time = ft_get_time();
 	return (ft_open_sem(info));
 }
 
