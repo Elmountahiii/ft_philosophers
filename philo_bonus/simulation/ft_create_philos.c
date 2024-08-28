@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:12:52 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/27 21:58:27 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:06:35 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 void	*ft_self_monitor(void *data)
 {
 	t_philo *philo;
+	size_t	time_since;
 	philo = (t_philo *) data;
-	printf("start self monitoring\n");
 	while (1)
 	{
-		/* code */
+		time_since = ft_get_time() - philo->last_meal;
+		if (time_since > philo->info->time_2_die)
+		{
+			philo->is_dead = true;
+			break;
+		}
+		usleep(400);
 	}
 	return (NULL);
 }
@@ -27,11 +33,12 @@ void	*ft_self_monitor(void *data)
 void	routine(t_philo *philo)
 {
 	sem_wait(philo->info->start_lock);
+	philo->last_meal = ft_get_time();
 	pthread_create(&philo->monitor,NULL, ft_self_monitor,philo);
 	if (philo->id % 2 == 0)
 	{
 		ft_print_message(philo, "is sleeping");
-		ft_sleep(philo->info->time_2_sleep);
+		ft_sleep(philo,philo->info->time_2_sleep);
 	}
 	while (1)
 	{
@@ -40,16 +47,21 @@ void	routine(t_philo *philo)
 		ft_print_message(philo, "has taken a fork");
 		sem_wait(philo->info->forks);
 		ft_print_message(philo, "has taken a fork");
+		philo->last_meal = ft_get_time();
 		philo->meal_count ++;
 		ft_print_message(philo, "is eating");
-		ft_sleep(philo->info->time_2_eat);
+		if (ft_sleep(philo,philo->info->time_2_eat))
+			break;
 		sem_post(philo->info->forks);
 		sem_post(philo->info->forks);
 		ft_print_message(philo, "is sleeping");
-		ft_sleep(philo->info->time_2_sleep);
+		if (ft_sleep(philo,philo->info->time_2_sleep))
+			break;
 		if (philo->info->meal_target != -1 && philo->meal_count == philo->info->meal_target)
 			break;
 	}
+	sem_post(philo->info->forks);
+	sem_post(philo->info->forks);
 	exit(0);
 }
 
