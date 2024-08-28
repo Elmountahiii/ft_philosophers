@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:26:04 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/06/25 12:14:20 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:33:11 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	ft_atoi(char *str)
 	while (ft_isdigit(*str))
 	{
 		result = result * 10 + *str - 48;
+		if (sign == 1 && result < 0)
+			return (-1);
 		str++;
 	}
 	return (result * sign);

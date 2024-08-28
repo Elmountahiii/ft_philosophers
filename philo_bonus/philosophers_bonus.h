@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 01:16:35 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/28 14:06:04 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:55:39 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@
 # include <sys/time.h>
 # include <stdbool.h>
 # include <pthread.h>
+# include <signal.h>
 # define	SEM_FORKS_NAME "/forks"
 # define	SEM_LOCK_NAME  "/start_lock"
 # define	SEM_PRINT_LOCK	"/print_lock"
 
 typedef struct s_philo {
+	int					pid;
 	int					id;
 	int					meal_count;
 	size_t				last_meal;
@@ -54,7 +56,8 @@ int		ft_atoi(char *str);
 int		ft_isdigit(int d);
 void	ft_print_message(t_philo *philo,char *message);
 size_t	ft_get_time(void);
-int	ft_sleep(t_philo *philo, size_t time2sleep);
+int		ft_sleep(t_philo *philo, size_t time2sleep);
+void	ft_print_died(t_philo *philo);
 // init functions
 int		ft_init_philos(t_general_info **info, int argc, char **argv);
 // simulation functions

@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 19:39:29 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/25 16:23:17 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/28 20:46:15 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_monitoring(t_general_info *info)
 	int		i;
 	size_t	time_since;
 
-	i = 0;
-	time_since = 0;
 	while (!ft_get_exit(info))
 	{
 		i = 0;

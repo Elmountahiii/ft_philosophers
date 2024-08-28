@@ -6,7 +6,7 @@
 /*   By: yel-moun <yel-moun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:58:03 by yel-moun          #+#    #+#             */
-/*   Updated: 2024/08/26 01:01:00 by yel-moun         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:23:19 by yel-moun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_general_info
 {
 	int						philo_num;
 	int						simulation_end;
-	int						meal_target;
+	size_t					meal_target;
 	size_t					simulation_start;
 	size_t					time_2_die;
 	size_t					time_2_sleep;
@@ -43,7 +43,7 @@ typedef struct s_general_info
 typedef struct s_philosopher
 {
 	int					id;
-	int					meal_count;
+	size_t				meal_count;
 	size_t				last_meal_time;
 	pthread_t			thread;
 	pthread_mutex_t		*last_meal_lock;
@@ -68,7 +68,7 @@ typedef struct s_philo
 	pthread_mutex_t	*print_lock;
 	pthread_t		*treads;
 	pthread_mutex_t	*forks;
-	struct s_data	*philo_data; //philos
+	struct s_data	*philo_data;
 }	t_philo;
 
 typedef struct s_data
@@ -101,12 +101,12 @@ int		ft_sleep(t_general_info *info,	size_t time2sleep);
 int		ft_init_mutexes(t_general_info *info);
 int		ft_init_info(t_general_info **info, int argc, char **argv);
 int		ft_init_philosophers(t_general_info *info);
-int		ft_init_numbers(t_general_info **info,  char **argv);
+int		ft_init_numbers(t_general_info **info, int argc, char **argv);
 //simulation
 void	ft_start_simulation(t_general_info *info);
 void	*ft_simulation(void *data);
 void	ft_monitoring(t_general_info *info);
-void	ft_print_philo_info(t_philosopher *philo); // to delete
+void	ft_print_philo_info(t_philosopher *philo);
 int		ft_log(t_philosopher *philo, char *str);
 int		ft_think(t_philosopher *philo);
 int		ft_take_forks(t_philosopher *philo);
@@ -124,4 +124,6 @@ bool	ft_get_dead(t_general_info *info);
 void	ft_set_dead(t_general_info *info, bool dead);
 int		ft_get_simulation_end(t_general_info *info);
 void	ft_set_simulation_end(t_general_info *info);
+// clean functions
+void	ft_clean(t_general_info *info);
 #endif

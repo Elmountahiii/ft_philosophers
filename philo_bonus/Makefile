@@ -8,7 +8,7 @@ NC=\033[0m
 NAME = philo_bonus
 CC = cc
 
-utils_files = ft_atoi.c ft_isdigit.c ft_print_message.c ft_get_time.c ft_sleep.c
+utils_files = ft_atoi.c ft_isdigit.c ft_print_message.c ft_get_time.c ft_sleep.c ft_print_died.c
 init_files = ft_init_philos.c
 simlation_files = ft_simulation.c ft_create_philos.c
 clean_files = ft_clean.c
