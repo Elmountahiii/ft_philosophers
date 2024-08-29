@@ -10,7 +10,7 @@ CC = cc
 
 utils_files = ft_atoi.c ft_isdigit.c ft_print_message.c ft_get_time.c ft_sleep.c ft_print_died.c
 init_files = ft_init_philos.c
-simlation_files = ft_simulation.c ft_create_philos.c
+simlation_files = ft_simulation.c ft_create_philos.c ft_philo_release.c ft_philo_utils.c
 clean_files = ft_clean.c
 simlation_pre = $(addprefix simulation/, $(simlation_files))
 utils_pre= $(addprefix utils/, $(utils_files)) 
@@ -20,6 +20,7 @@ files = main_bonus.c $(utils_pre) $(init_pre) $(simlation_pre) $(clean_pre)
 header = philosophers_bonus.h
 SOBJ = $(files:.c=.o)
 CFLAGS = -Wall -Wextra -Werror 
+#-g -fsanitize=thread
 
 RM = rm -f
 
@@ -40,6 +41,6 @@ fclean: clean
 	@echo "$(RED)Cleaning $(NAME) ...$(NC)"
 	@$(RM) $(NAME)
 
-re: fclean all philo
+re: fclean all
 
 .PHONY: all clean fclean re

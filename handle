@@ -1,0 +1,6 @@
+Mandatory : 
+Free of resources in case of fail malloc
+
+Bonus :
+
+last argument handle the negative or number 0.

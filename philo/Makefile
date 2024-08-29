@@ -23,8 +23,8 @@ files = main.c $(utiles_pre) $(treads_pre) $(simulation_pre) $(setters_pre) $(cl
 header = philosophers.h
 SOBJ = $(files:.c=.o)
 CFLAGS = -Wall -Wextra -Werror 
+# -g  -fsanitize=thread
 # -g -fsanitize=address
-#-g  -fsanitize=thread
 RM = rm -f
 
 all: $(NAME)
@@ -48,5 +48,3 @@ re: fclean all philo
 
 .PHONY: all clean fclean re
 
-# ./philo 3 599 200 150
-# ./philo 3 600 200 150 1 with flag
